@@ -1,8 +1,13 @@
 <script lang="ts">
 
-    let email : String;
-    let password : String;
-    let confirmPassword : String;
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+    } from 'firebase/auth';
+
+    let email : string;
+    let password : string;
+    let confirmPassword : string;
 
     // input-base-error for wrong username/password
 	let emailBoxOutline = "input-base-100"
@@ -11,8 +16,20 @@
     async function post() {
         // /api/login/getYourUser
         if (password == confirmPassword) {
-            
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
         }else {
+            passwordBoxOutline = "input-error"
             alert("Passwords don't match!");
         }
 		

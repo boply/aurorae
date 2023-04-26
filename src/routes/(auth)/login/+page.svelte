@@ -1,13 +1,29 @@
 <script lang="ts">
     
-    let email : String;
-    let password : String;
+	import {
+		getAuth,
+		signInWithEmailAndPassword,
+	} from 'firebase/auth';
+
+    let email : string;
+    let password : string;
 
 	// input-base-error for wrong username/password
 	let boxOutline = "input-base-100"
 
     async function post() {
-		
+		const auth = getAuth();
+		signInWithEmailAndPassword(auth, email, password)
+		.then((userCredential) => {
+			// Signed in 
+			const user = userCredential.user;
+			// ...
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			boxOutline = "input-error"
+		});
     }
 
 </script>

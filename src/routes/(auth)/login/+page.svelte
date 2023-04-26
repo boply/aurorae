@@ -10,9 +10,9 @@
 </script>
 
 <!-- Email and Password Box -->
-<form method="POST">
+<form class="flex flex-col gap-6" method="POST">
 	<input bind:value={name} type="text" placeholder="Username" class="input w-full max-w-xs " />
-	<input bind:value={password} type="password" placeholder="Password" class="input w-full max-w-xs my-4" />
+	<input bind:value={password} type="password" placeholder="Password" class="input w-full max-w-xs" />
 
 	<!-- Submit Button -->
 	<input type="button" value="Login" class="btn btn-primary my-4 w-full" on:click={post} />

@@ -16,11 +16,11 @@
 
 </script>
 
-<form method="POST">
+<form class="flex flex-col gap-6" method="POST">
     <!-- Username/Email/Password/Confirm Boxes -->
-    <input bind:value={username} type="text" placeholder="Username" class="input w-full max-w-xs my-4" name="username_box" />
+    <input bind:value={username} type="text" placeholder="Username" class="input w-full max-w-xs" name="username_box" />
     <input bind:value={password} type="password" placeholder="Password" class="input w-full max-w-xs" name="password_box" />
-    <input bind:value={confirmPassword} type="password" placeholder="Confirm Password" class="input w-full max-w-xs my-4" name="confirm_box" />
+    <input bind:value={confirmPassword} type="password" placeholder="Confirm Password" class="input w-full max-w-xs" name="confirm_box" />
 
     <!-- Submit Button -->
     <input type="button" value="Sign Up" class="btn btn-primary my-4 w-full" on:click={post} />

@@ -1,7 +1,10 @@
 <script lang="ts">
     
-    let name : String;
+    let email : String;
     let password : String;
+
+	// input-base-error for wrong username/password
+	let boxOutline = "input-base-100"
 
     async function post() {
 		
@@ -11,8 +14,8 @@
 
 <!-- Email and Password Box -->
 <form class="flex flex-col gap-6" method="POST">
-	<input bind:value={name} type="text" placeholder="Username" class="input w-full max-w-xs " />
-	<input bind:value={password} type="password" placeholder="Password" class="input w-full max-w-xs" />
+	<input bind:value={email} type="text" placeholder="Email" class="input {boxOutline} w-full max-w-xs " />
+	<input bind:value={password} type="password" placeholder="Password" class="input {boxOutline} w-full max-w-xs" />
 
 	<!-- Submit Button -->
 	<input type="button" value="Login" class="btn btn-primary my-4 w-full" on:click={post} />

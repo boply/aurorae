@@ -1,0 +1,25 @@
+<script lang="ts">
+    
+    let name : String;
+    let password : String;
+
+    async function post() {
+		
+    }
+
+</script>
+
+<!-- Email and Password Box -->
+<form method="POST">
+	<input bind:value={name} type="text" placeholder="Username" class="input w-full max-w-xs " />
+	<input bind:value={password} type="password" placeholder="Password" class="input w-full max-w-xs my-4" />
+
+	<!-- Submit Button -->
+	<input type="button" value="Login" class="btn btn-primary my-4 w-full" on:click={post} />
+</form>
+
+<!-- Signup Redirect -->
+<div class="divider h-0">OR</div>
+<div class="self-center text-center">
+	Don't have an account? <a class="underline" href="/signup">Sign Up</a>
+</div>

@@ -1,7 +1,6 @@
 <script lang="ts">
 
-  let authenticated = true;
-  let userName = "test";
+  let authenticated = false;
 
   async function Logout () {
     //logout code
@@ -80,7 +79,7 @@
         {:else}
           <div class="gap-2" > 
             <a href="/login" class="btn btn-ghost">Login</a>
-            <a href="/signup" class="btn btn-primary">Signup</a>
+            <a href="/signup" class="btn btn-primary">Sign Up</a>
           </div>
         {/if}
     </div>

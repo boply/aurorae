@@ -9,7 +9,7 @@
 </script>
 
 
-<div class="navbar bg-base-200 p-2 fixed z-50 shadow-xl">
+<div class="navbar bg-base-200 p-2 fixed z-50">
     <div class="navbar-start">
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <div class="dropdown">

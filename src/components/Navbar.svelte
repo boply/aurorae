@@ -57,23 +57,13 @@
             <!-- svelte-ignore a11y-label-has-associated-control -->
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
               <div class="w-10 rounded-full">
-                <!-- svelte-ignore a11y-missing-attribute -->
-                <img src="https://www.w3schools.com/howto/img_avatar.png" />
+                <img alt="error" src="https://www.w3schools.com/howto/img_avatar.png" />
               </div>
             </label>
             <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
-              <li>
-                <!-- svelte-ignore a11y-missing-attribute -->
-                <a class="justify-between">
-                  Profile
-                  <span class="badge">New</span>
-                </a>
-              </li>
-              <!-- svelte-ignore a11y-missing-attribute -->
-              <li><a>Settings</a></li>
-              <!-- svelte-ignore a11y-missing-attribute -->
-              <li><a>Logout</a></li>
+              <li><a href="/settings">Settings</a></li>
+              <li><a href="/">Logout</a></li>
             </ul>
           </div>
         {:else}

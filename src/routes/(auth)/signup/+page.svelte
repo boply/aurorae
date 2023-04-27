@@ -1,7 +1,7 @@
 <script lang="ts">
 
+    import { auth } from "../../../firebase";
     import {
-        getAuth,
         createUserWithEmailAndPassword,
     } from 'firebase/auth';
 
@@ -16,11 +16,11 @@
     async function post() {
         // /api/login/getYourUser
         if (password == confirmPassword) {
-            const auth = getAuth();
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                window.location.href = '/login';
                 // ...
             })
             .catch((error) => {

@@ -1,9 +1,27 @@
 <script lang="ts">
 
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase";
+
   let authenticated = false;
 
+  onAuthStateChanged(auth, (user: any) => {
+  if (user) {
+    const uid = user.uid;
+    authenticated = true;
+    // ...
+  } else {
+    authenticated = false;
+    // ...
+  }
+  });
+
   async function Logout () {
-    //logout code
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
   }
   
 </script>
@@ -63,7 +81,7 @@
             <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
               <li><a href="/settings">Settings</a></li>
-              <li><a href="/">Logout</a></li>
+              <li><button on:click={Logout} >Logout</button></li>
             </ul>
           </div>
         {:else}

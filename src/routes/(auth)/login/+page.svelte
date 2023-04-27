@@ -1,7 +1,7 @@
 <script lang="ts">
     
+	import { auth } from "../../../firebase";
 	import {
-		getAuth,
 		signInWithEmailAndPassword,
 	} from 'firebase/auth';
 
@@ -12,11 +12,11 @@
 	let boxOutline = "input-base-100"
 
     async function post() {
-		const auth = getAuth();
 		signInWithEmailAndPassword(auth, email, password)
 		.then((userCredential) => {
 			// Signed in 
 			const user = userCredential.user;
+			window.location.href = '/';
 			// ...
 		})
 		.catch((error) => {

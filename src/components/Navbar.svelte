@@ -1,7 +1,7 @@
 <script lang="ts">
 
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../firebase";
+  import { onAuthStateChanged, signOut } from "firebase/auth";
+  import { auth } from "../firebase";
 
   let authenticated = false;
 
@@ -27,7 +27,7 @@ import { auth } from "../firebase";
 </script>
 
 
-<div class="navbar bg-base-200 p-2 fixed z-50">
+<div class="navbar bg-base-200 p-2 fixed z-50 text-base-content">
     <div class="navbar-start">
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <div class="dropdown">

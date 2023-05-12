@@ -1,16 +1,23 @@
 <script lang="ts">
-//   import Icon from 'svelte-icons-pack/Icon.svelte';
-//   import FiEdit2 from 'svelte-icons-pack/fi/FiEdit2';
   import { auth } from '../../../firebase';
-  import { onAuthStateChanged, updateProfile, updateEmail, updatePassword } from "firebase/auth";
-  import { Eye, EyeOff } from 'lucide-svelte';
+  import { onAuthStateChanged } from "firebase/auth";
+  import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
 
-  onAuthStateChanged(auth, (user: any) => {
-  if (user) {
-    const uid = user.uid;
-    let _user = user;
-  }
-  });
+  
+
+  onAuthStateChanged(auth, (user) => {
+	if (user) {
+		// User is signed in, see docs for a list of available properties
+		// https://firebase.google.com/docs/reference/js/firebase.User
+		const uid = user.uid;
+		// ...
+	} else {
+		// User is signed out
+		// ...
+	}
+});
+
+let _user = $user;
   
 
   let displayName = _user.displayName;

@@ -27,7 +27,7 @@
 </script>
 
 
-<div class="navbar bg-base-200 p-2 fixed z-50 text-base-content shadow-lg">
+<div class="navbar bg-base-100 p-2 fixed z-50 text-base-content shadow-lg">
     <div class="navbar-start">
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <div class="dropdown">
@@ -91,9 +91,9 @@
           </ul>
         </div>
       {:else}
-        <div class="gap-2" > 
-          <a href="/login" class="btn btn-ghost">Login</a>
-          <a href="/signup" class="btn btn-primary">Sign Up</a>
+        <div class="flex gap-4" > 
+          <a href="/login" class="btn btn-secondary btn-sm w-24 h-10">Login</a>
+          <a href="/signup" class="btn btn-primary btn-sm w-24 h-10">Sign Up</a>
         </div>
       {/if}
     </div>

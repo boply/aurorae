@@ -9,13 +9,14 @@ export default {
       {
         mytheme: {
           primary: "#3383FF",
-          secondary: "#f6d860",
+          secondary: "#e5e7eb",
           accent: "#37cdbe",
           neutral: "#3d4451",
           "base-100": "#ffffff",
 
           "--rounded-box": ".25rem",
-          "--rounded-btn": ".25rem"
+          "--rounded-btn": ".25rem",
+          "--btn-text-case": "default"
         },
       },
     ],

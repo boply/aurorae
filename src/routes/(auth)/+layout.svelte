@@ -2,7 +2,7 @@
 
 <div class="flex flex-col justify-center h-screen w-screen bg-base-100">
 
-	<div class="bg-base-200 flex flex-col p-8 w-96 h-fit justify-between self-center rounded-lg gap-4 shadow-xl">
+	<div class="bg-base-200 flex flex-col p-10 w-96 h-fit justify-between self-center rounded-box gap-4 shadow-xl">
 
         <slot />
 

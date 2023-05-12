@@ -14,8 +14,8 @@ export default {
           neutral: "#3d4451",
           "base-100": "#ffffff",
 
-          "--rounded-box": ".2rem",
-          "--rounded-btn": "0.5rem"
+          "--rounded-box": ".25rem",
+          "--rounded-btn": ".25rem"
         },
       },
     ],

@@ -37,7 +37,7 @@
         </label>
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a href="/shop">Shop</a></li>
+          <li><a href="/products">Products</a></li>
         </ul>
       </div>
 
@@ -45,7 +45,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a href="/shop">Shop</a></li>
+        <li><a href="/products">Products</a></li>
       </ul>
     </div>
     <div class="navbar-end">

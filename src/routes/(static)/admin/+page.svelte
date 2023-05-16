@@ -18,6 +18,7 @@
         </label>
         <input type="number" placeholder="Ex: 100.00" class="input input-bordered w-full" />
     </div>
+    <br>
+    <button class="btn btn-outline btn-info">Add Product</button>
 </div>
-    
 </div>

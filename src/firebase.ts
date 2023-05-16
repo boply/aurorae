@@ -27,3 +27,5 @@ const db = getFirestore();
 const storage = getStorage(app);
 
 export { auth, db, storage };
+
+// this comment must be deleted

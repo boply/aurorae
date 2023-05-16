@@ -21,6 +21,7 @@
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.
+      // what happens when errors happen?
     });
   }
   

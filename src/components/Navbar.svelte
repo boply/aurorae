@@ -21,6 +21,7 @@
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.
+      // what happens when errors happen?
     });
   }
   
@@ -66,7 +67,7 @@
             </div>
           </label>
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-          <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-200 shadow">
+          <div tabindex="0" class="mt-0 card card-compact dropdown-content w-52 bg-base-100 shadow-lg">
             <div class="card-body">
               <span class="font-bold text-lg">8 Items</span>
               <span class="text-info">Subtotal: $999</span>
@@ -85,7 +86,7 @@
             </div>
           </label>
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-0 p-2 shadow-lg bg-base-100 rounded-box w-52">
             <li><a href="/settings">Settings</a></li>
             <li><button on:click={Logout} >Logout</button></li>
           </ul>

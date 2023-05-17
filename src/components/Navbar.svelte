@@ -77,4 +77,25 @@
             </div>
           </div>
         </div>
-  
+        <div class="dropdown dropdown-end">
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+          <!-- svelte-ignore a11y-label-has-associated-control -->
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="error" src="https://www.w3schools.com/howto/img_avatar.png" />
+            </div>
+          </label>
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-0 p-2 shadow-lg bg-base-100 rounded-box w-52">
+            <li><a href="/settings">Settings</a></li>
+            <li><button on:click={Logout} >Logout</button></li>
+          </ul>
+        </div>
+      {:else}
+        <div class="flex gap-4" > 
+          <a href="/login" class="btn btn-secondary btn-sm w-24 h-10">Login</a>
+          <a href="/signup" class="btn btn-primary btn-sm w-24 h-10">Sign Up</a>
+        </div>
+      {/if}
+    </div>
+  </div>

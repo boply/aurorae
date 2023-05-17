@@ -1,3 +1,5 @@
+
+
 <div class="flex flex-col self-center w-full h-fit bg-base-200 shadow-xl rounded-lg p-4 mb-4 gap-2">
 	<div class=" flex flex-col justify-center bg-base-300 rounded-lg p-4">
 		<span class="self-start text-sm">Account</span>

@@ -5,5 +5,5 @@
 </script>
 
 <div class="flex min-h-screen w-full px-8 py-24">
-    <Card title="Title" description="This is an example description" image="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png" />
+    <Card title="Neural Stem Cells" description="Derived from iPSCs" image="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2018/10/stem-cells.jpg?w=1155&h=1541" />
 </div>

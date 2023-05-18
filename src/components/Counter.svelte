@@ -1,18 +1,35 @@
 <script>
 
-    let number = 0;
+    export let number = 1;
 
+    function minus() {
+        if (number <= 1) {
+            number = 1;
+        } else {
+            number -= 1;
+        }
+    }
+
+    function plus() {
+        if (number >= 99) {
+            number = 99;
+        } else {
+            number += 1;
+        }
+    }
 
 </script>
 
-<div class="flex flex-row w-40 h-12">
+<div class="rounded-box bg-gray-100 flex flex-row w-36 h-12">
     <div class="btn btn-secondary w-1/3">
-        <button id="minus-btn">-</button>
+        <button id="minus-btn" on:click={minus}>-</button>
     </div>
-    <div class="box-rounded bg-500 w-1/3 h-full flex flex-col text-center flex-row">
-        <p>{number}</p>
+    <div class="w-1/3 h-full flex">
+        <span class="flex text-center self-center h-fit w-full">
+            <p>{number}</p>
+        </span>
     </div>
     <div class="btn btn-secondary w-1/3">
-        <button id="plus-btn">+</button>
+        <button id="plus-btn" on:click={plus}>+</button>
     </div>
 </div>

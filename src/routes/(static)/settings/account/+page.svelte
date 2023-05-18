@@ -1,5 +1,23 @@
+<script lang="ts">
 
-
+	import { onAuthStateChanged, signOut } from "firebase/auth";
+	import { auth } from "../../../../firebase";
+  
+	let authenticated = false;
+  
+	onAuthStateChanged(auth, (user: any) => {
+	if (user) {
+	  const uid = user.uid;
+	  authenticated = true;
+	  // ...
+	} else {
+	  authenticated = false;
+	  // ...
+	}
+	});
+	
+  </script>
+{#if authenticated}
 <div class="flex flex-col self-center w-full h-fit bg-base-200 shadow-xl rounded-lg p-4 mb-4 gap-2">
 	<div class=" flex flex-col justify-center bg-base-300 rounded-lg p-4">
 		<span class="self-start text-sm">Account</span>
@@ -8,7 +26,7 @@
 			<div class="flex flex-row gap-3 justify-between">
 				<img
 					class="self-center btn btn-ghost btn-circle outline outline-primary/50 rounded-full avatar w-24 h-24 my-8"
-					
+					src="https://www.w3schools.com/howto/img_avatar.png"
 					alt="acc"
 				/>
 				<span class="self-center text-base font-bold"></span>
@@ -174,3 +192,4 @@
 		</div>
 	</div>
 </div>
+{/if}

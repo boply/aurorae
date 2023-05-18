@@ -21,15 +21,15 @@
 </script>
 
 <div class="rounded-box bg-gray-100 flex flex-row w-36 h-12">
-    <div class="btn btn-secondary w-1/3">
-        <button id="minus-btn" on:click={minus}>-</button>
+    <div class="btn btn-secondary w-1/3" on:click={minus}>
+        <button id="minus-btn">-</button>
     </div>
     <div class="w-1/3 h-full flex">
         <span class="flex text-center self-center h-fit w-full">
             <p>{number}</p>
         </span>
     </div>
-    <div class="btn btn-secondary w-1/3">
-        <button id="plus-btn" on:click={plus}>+</button>
+    <div class="btn btn-secondary w-1/3" on:click={plus}>
+        <button id="plus-btn">+</button>
     </div>
 </div>

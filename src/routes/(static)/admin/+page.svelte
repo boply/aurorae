@@ -6,7 +6,7 @@ function post() {
 
 </script>
 
-<div class="flex flex-col w-full h-full px-8 py-24">
+<div class="flex min-h-screen w-full flex-col px-8 py-24">
     <div class ="flex flex-col w-96 md:w-1/2 self-center gap-6">
       <div class="form-control w-full">
           <label class="label">

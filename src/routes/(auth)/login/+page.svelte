@@ -32,6 +32,9 @@
 <form class="flex flex-col gap-6" method="POST">
 	<input bind:value={email} type="text" placeholder="Email" class="input {boxOutline} w-full max-w-xs " />
 	<input bind:value={password} type="password" placeholder="Password" class="input {boxOutline} w-full max-w-xs" />
+	<!-- <label class="label">
+		<a href="/" class="label-text-alt link">Forgot password?</a>
+	  </label> -->
 
 	<!-- Submit Button -->
 	<input type="button" value="Login" class="btn btn-primary my-4 w-full" on:click={post} />

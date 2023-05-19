@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from "firebase/auth";
+import { writable } from 'svelte/store';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -21,11 +22,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 
+
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore();
 const storage = getStorage(app);
 
 export { auth, db, storage };
+export const user = writable(null);
+
+onAuthStateChanged(auth, (User) => {
+  if (User) {
+      
+      // @ts-expect-error: "Can not set value User to null (user)"
+      user.set(User);
+  } else {
+      user.set(null);
+  }
+});
 
 // this comment must be deleted

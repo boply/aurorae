@@ -9,8 +9,10 @@
     </div>
 
     <div class="flex flex-col h-fit w-1/4 gap-2 self-end rounded-box shadow-xl bg-base-100 fixed">
-        <div class="flex w-full h-12 bg-secondary text-center">Cart</div>
-        <div class="flex flex-col p-8 gap-10">
+        <div class="flex w-full h-16 bg-secondary justify-center">
+            <p class="flex text-center self-center h-fit w-fit font-bold text-xl">Cart</p>
+        </div>
+        <div class="flex flex-col p-8 gap-8">
             <p>Products: $9899</p>
             <p>Tax: $100</p>
             <p>Subtotal: $9999</p>

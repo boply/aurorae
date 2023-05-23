@@ -1,23 +1,16 @@
 <script lang="ts">
 
 	import { onAuthStateChanged, signOut } from "firebase/auth";
-	import { auth } from "../../../../firebase";
-  
-	let authenticated = false;
-  
-	onAuthStateChanged(auth, (user: any) => {
-	if (user) {
-	  const uid = user.uid;
-	  authenticated = true;
-	  // ...
-	} else {
-	  authenticated = false;
-	  // ...
-	}
-	});
+	import { auth, user } from "../../../../firebase";
 	
+
+	
+	// let displayName = user.displayName;
+	// let email = user.email;
+	// let photoURL = user.photoURL;
+
+	// const uid = user.uid;
   </script>
-{#if authenticated}
 <div class="flex flex-col self-center w-full h-fit bg-base-200 shadow-xl rounded-lg p-4 mb-4 gap-2">
 	<div class=" flex flex-col justify-center bg-base-300 rounded-lg p-4">
 		<span class="self-start text-sm">Account</span>
@@ -192,4 +185,3 @@
 		</div>
 	</div>
 </div>
-{/if}

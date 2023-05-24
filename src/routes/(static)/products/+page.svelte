@@ -1,23 +1,17 @@
 
 <script lang="ts">
-  import Card from "../../../components/Product-Card.svelte";
+  import Card from "../../../components/product-card.svelte";
 	import { onMount } from 'svelte';
-	let data;
-  let products: any;
-  let title: any;
-  let description: any;
-  let thumbnail: any;
-	onMount(async () => {
-		data = await fetch('https://dummyjson.com/products').then((x) => x.json());
-    products = data.products;
-    for (let i = 0; i < 5; i++){
-      console.log(products.length);
-      title = products[i].title;
-      description = products[i].description;
-      thumbnail = products[i].thumbnail;
-      // document.getElementById("content").innerHTML += "hi";
-    }
-	});
+  let title: string;
+  let description: string;
+  let thumbnail: string;
+	
+  /** @type {import('./$types').PageData} */
+  export let data;
+  let products = [data.products];
+  for (let i = 0; i < products.length; i++){
+    console.log(products[i]);
+  }
 
 	let infos = [
 		{ title: 'Stem Cells', description: 'Nurture the Mind', thumbnail: 'https://i0.wp.com/vitalrecord.tamhsc.edu/wp-content/uploads/2016/05/stem-pixabay.jpg?fit=1100%2C625&ssl=1' },
@@ -29,15 +23,15 @@
 
 
 <div class="flex flex-wrap gap-12 min-h-screen w-full py-24 md:px-24 p-8 justify-center md:justify-normal">
+
   
   
+  <div id="content">
+  </div>
   
-  <!-- <div id="content">
-  </div> -->
-  <!-- <Card title={title} description={description} image={thumbnail} /> -->
   
-  {#each infos as info}
-  <Card title={info.title} description={info.description} image={info.thumbnail} />
+  {#each products as product}
+  <Card title={product.title} description={product.description} image={product.thumbnail} />
   {/each}
 </div>
 

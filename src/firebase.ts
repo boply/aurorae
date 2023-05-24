@@ -21,25 +21,28 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-
-
-
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore();
-const storage = getStorage(app);
 
-export { auth, db, storage };
+export const authenticated = writable(false);
+export const auth = () => {
+	return getAuth(app);
+};
 export const user = writable(null);
 
-onAuthStateChanged(auth, (User) => {
-  if (User) {
-      
-      // @ts-expect-error: "Can not set value User to null (user)"
-      user.set(User);
-  } else {
-      user.set(null);
-  }
+// Listen for authentication state to change => updates authenticated store
+onAuthStateChanged(auth(), (User) => {
+	if (User) {
+		authenticated.set(true);
+		// @ts-expect-error: "Can not set value User to null (user)"
+		user.set(User);
+	} else {
+		authenticated.set(false);
+		user.set(null);
+	}
 });
 
-// this comment must be deleted
+const db = getFirestore();
+const storage = getStorage(app);
+const aid = "c4p6wp5rTqSa0pzZ7XGDUe13od93"
+
+export {db, storage, aid };

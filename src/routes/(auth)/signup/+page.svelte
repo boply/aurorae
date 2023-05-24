@@ -16,26 +16,14 @@
     let passwordBoxOutline = "input-base-100"
     let nameBoxOutline = "input-base-100"
 
-    const updateUsername = () => {
-    updateProfile(auth.currentUser, {
-      displayName: name
-    }).then(() => {
-      console.log('Username updated successfully!');
-
-    }).catch((error) => {
-      console.error('Error updating username:', error);
-    });
-  }
-
     async function post() {
         // /api/login/getYourUser
         if (password == confirmPassword) {
-            createUserWithEmailAndPassword(auth, email, password)
+            createUserWithEmailAndPassword(auth(), email, password)
             .then((userCredential) => {
                 // Signed in 
-                const user = userCredential.user;
+                updateProfile(userCredential.user, { displayName: name });
                 window.location.href = '/login';
-                updateUsername;
                 // ...
             })
             .catch((error) => {

@@ -12,7 +12,7 @@
 	let boxOutline = "input-base-100"
 
     async function post() {
-		signInWithEmailAndPassword(auth, email, password)
+		signInWithEmailAndPassword(auth(), email, password)
 		.then((userCredential) => {
 			// Signed in 
 			const user = userCredential.user;

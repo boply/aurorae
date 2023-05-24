@@ -1,62 +1,48 @@
+
 <script lang="ts">
   import Card from "../../../components/Product-Card.svelte";
-  // Get the table element
-  const table = document.getElementById('productTable');
+	import { onMount } from 'svelte';
+	let data;
+  let products: any;
+  let title: any;
+  let description: any;
+  let thumbnail: any;
+	onMount(async () => {
+		data = await fetch('https://dummyjson.com/products').then((x) => x.json());
+    products = data.products;
+    for (let i = 0; i < 5; i++){
+      console.log(products.length);
+      title = products[i].title;
+      description = products[i].description;
+      thumbnail = products[i].thumbnail;
+      document.getElementById("content").innerHTML += "hi";
+    }
+	});
 
-  // Fetch data from the API
-  fetch('http://localhost:8085/api/products/getProducts')
-    .then(response => response.json())
-    .then(data => {
-      // Loop through the data array
-      data.data.forEach(product => {
-        // Create a new row in the table
-        const row = table.insertRow();
+	let infos = [
+		{ title: 'Stem Cells', description: 'Nurture the Mind', thumbnail: 'https://i0.wp.com/vitalrecord.tamhsc.edu/wp-content/uploads/2016/05/stem-pixabay.jpg?fit=1100%2C625&ssl=1' },
+		{ title: 'Wack Cells', description: 'No Touch!', thumbnail: 'https://i0.wp.com/vitalrecord.tamhsc.edu/wp-content/uploads/2016/05/stem-pixabay.jpg?fit=1100%2C625&ssl=1' },
+		{ title: 'Yum Cells', description: 'Food for the stomach', thumbnail: 'https://i0.wp.com/vitalrecord.tamhsc.edu/wp-content/uploads/2016/05/stem-pixabay.jpg?fit=1100%2C625&ssl=1' }
+	];
 
-        // Insert cells with product information
-        const idCell = row.insertCell();
-        idCell.textContent = product.ID;
-
-        const nameCell = row.insertCell();
-        nameCell.textContent = product.NAME;
-
-        const descriptionCell = row.insertCell();
-        descriptionCell.textContent = product.DESCRIPTION;
-
-        const priceCell = row.insertCell();
-        priceCell.textContent = product.PRICE;
-
-        const inStockCell = row.insertCell();
-        inStockCell.textContent = product.INSTOCK;
-      });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
-
-    
 </script>
 
 
-
 <div class="flex flex-wrap gap-10 min-h-screen w-full px-8 py-24 justify-center md:justify-normal">
-    <Card title="Neural Stem Cells" description="Derived from iPSCs" image="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2018/10/stem-cells.jpg?w=1155&h=1541" />
-    
-    <Card title="Neural Stem Cells" description="Derived from iPSCs" image="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2018/10/stem-cells.jpg?w=1155&h=1541" />
+  
+  
+  
+  <div id="content">
+    hi
+  </div>
+  <Card title={title} description={description} image={thumbnail} />
+  
+  {#each infos as info}
+  <Card title={info.title} description={info.description} image={info.thumbnail} />
+  {/each}
 </div>
 
-<table id="productTable">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>In Stock</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Product data will be inserted here -->
-  </tbody>
-</table>
+
+
+  
 

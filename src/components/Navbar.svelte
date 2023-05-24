@@ -1,7 +1,7 @@
 <script lang="ts">
 
   import { signOut } from "firebase/auth";
-  import { authenticated, auth, user } from "$firebase";
+  import { authenticated, auth, user, aid } from "$firebase";
 
 
   let _user: any = $user;
@@ -81,6 +81,9 @@
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-0 p-2 shadow-lg bg-base-100 rounded-box w-52">
             <li><a href="/settings">Settings</a></li>
+            {#if _user.uid == aid}
+            <li><a href="/admin">Admin</a></li>
+            {/if}
             <li><button on:click={Logout} >Logout</button></li>
           </ul>
         </div>

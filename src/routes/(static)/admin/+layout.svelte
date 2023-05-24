@@ -13,5 +13,5 @@ user.subscribe(async (data) => {
 {#if _user?.uid == aid}
     <slot/>
 {:else}
-    <script>throw error(404, 'Not found');</script>
+
 {/if}

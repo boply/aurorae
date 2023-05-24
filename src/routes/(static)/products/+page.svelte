@@ -15,7 +15,7 @@
       title = products[i].title;
       description = products[i].description;
       thumbnail = products[i].thumbnail;
-      document.getElementById("content").innerHTML += "hi";
+      // document.getElementById("content").innerHTML += "hi";
     }
 	});
 
@@ -28,14 +28,13 @@
 </script>
 
 
-<div class="flex flex-wrap gap-10 min-h-screen w-full px-8 py-24 justify-center md:justify-normal">
+<div class="flex flex-wrap gap-12 min-h-screen w-full py-24 md:px-24 p-8 justify-center md:justify-normal">
   
   
   
-  <div id="content">
-    hi
-  </div>
-  <Card title={title} description={description} image={thumbnail} />
+  <!-- <div id="content">
+  </div> -->
+  <!-- <Card title={title} description={description} image={thumbnail} /> -->
   
   {#each infos as info}
   <Card title={info.title} description={info.description} image={info.thumbnail} />

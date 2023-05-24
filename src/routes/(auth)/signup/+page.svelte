@@ -1,12 +1,10 @@
 <script lang="ts">
 
-    import { auth, user } from "../../../firebase";
+    import { auth, user } from "$firebase";
     import {
         createUserWithEmailAndPassword,
-        updateProfile,
     } from 'firebase/auth';
 
-    let name : string;
     let email : string;
     let password : string;
     let confirmPassword : string;
@@ -21,8 +19,7 @@
         if (password == confirmPassword) {
             createUserWithEmailAndPassword(auth(), email, password)
             .then((userCredential) => {
-                // Signed in 
-                updateProfile(userCredential.user, { displayName: name });
+                // Signed in
                 window.location.href = '/login';
                 // ...
             })
@@ -42,7 +39,6 @@
 
 <form class="flex flex-col gap-6" method="POST">
     <!-- Username/Email/Password/Confirm Boxes -->
-    <input bind:value={name} type="text" placeholder="First Name" class="input {nameBoxOutline} w-full max-w-xs"/>
     <input bind:value={email} type="text" placeholder="Email" class="input {emailBoxOutline} w-full max-w-xs" />
     <input bind:value={password} type="password" placeholder="Password" class="input {passwordBoxOutline} w-full max-w-xs"  />
     <input bind:value={confirmPassword} type="password" placeholder="Confirm Password" class="input {passwordBoxOutline} w-full max-w-xs" />

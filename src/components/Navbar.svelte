@@ -1,7 +1,15 @@
 <script lang="ts">
 
   import { signOut } from "firebase/auth";
-  import { authenticated, auth, user } from "../firebase";
+  import { authenticated, auth, user } from "$firebase";
+
+
+  let _user: any = $user;
+	
+  user.subscribe((data) => {
+	  _user = data;
+	});
+
 
   async function Logout () {
     signOut(auth()).then(() => {
@@ -68,7 +76,7 @@
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label tabindex="0" class="btn btn-ghost w-fit">
-              <p>Karthic</p>
+              <p>{_user?.email}</p>
           </label>
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-0 p-2 shadow-lg bg-base-100 rounded-box w-52">

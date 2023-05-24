@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import { user, aid } from '$firebase';
+
 function post() {
   // java api creation
 }

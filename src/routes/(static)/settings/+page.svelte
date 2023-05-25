@@ -53,7 +53,7 @@
 
 			<!-- Edit Email Button -->
 			<div class="flex flex-col justify-center">
-				<label for="edit-email-popup" class="btn btn-md btn-secondary w-48 self-end">Update Email</label>
+				<label for="edit-email-popup" class="btn btn-secondary btn-sm w-36 self-end">Update Email</label>
 			</div>
 
 			<!-- Edit Email Popup -->
@@ -66,7 +66,7 @@
 					<div class="flex self-center form-control w-full gap-4">
 						<span class="font-bold text-md">New Email:</span>
 						<div class="flex flex-row justify-between">
-							<input type="text" placeholder="email..." class="input input-bordered" id="new-email-input" />
+							<input type="text" placeholder="email..." class="input input-bordered" id="new-email-input"/>
 							<label for="edit-email-popup" class="btn btn-primary self-center" on:click={changeEmail}>Update Email</label>
 						</div>
 					</div>
@@ -83,7 +83,7 @@
 
 			<!-- Update Password Button -->
 			<div class="flex flex-col justify-center">
-				<label for="edit-password-popup" class="btn btn-secondary w-48 self-end">Update Password</label>
+				<label for="edit-password-popup" class="btn btn-secondary btn-sm w-36 self-end">Update Password</label>
 			</div>
 
 			<!-- Edit Password Popup -->

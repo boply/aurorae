@@ -36,7 +36,7 @@ function updateProduct() {
             <label class="label">
               <span class="label-text">Description</span>
             </label>
-            <textarea class="textarea textarea-bordered h-24" placeholder="Product Decription"></textarea>
+            <textarea class="textarea textarea-bordered h-24" placeholder="Product Description"></textarea>
           </div>
           <div class="form-control w-full">
             <label class="label">
@@ -49,8 +49,8 @@ function updateProduct() {
   </div>
 
   <!-- Remove Product -->
-  <div class="h-fit w-full bg-base-100 shadow-xl rounded-lg p-2 self-center md:self-start">
-    <input type="button" value="Remove Product" class="btn btn-primary my-4 h-full w-full" on:click={removeProduct}>
+  <div class="w-full bg-base-100 shadow-xl rounded-lg p-8 self-center md:self-start">
+    <input type="button" value="Remove Product" class="btn btn-primary h-full w-full" on:click={removeProduct}>
   </div>
 
 
@@ -58,7 +58,7 @@ function updateProduct() {
 
 
   <!-- Table -->
-  <div class="overflow-x-auto w-96 lg:w-2/3 self-center md:self-start bg-base-100 shadow-xl rounded-lg p-8">
+  <div class="overflow-x-auto w-96 lg:w-2/3 self-center md:self-start bg-base-100 shadow-xl rounded-lg">
     <table class="table w-full">
       <!-- head -->
       <thead>

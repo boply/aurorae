@@ -1,23 +1,18 @@
 <script lang="ts">
 
-  import { onAuthStateChanged, signOut } from "firebase/auth";
-  import { auth } from "../firebase";
+  import { signOut } from "firebase/auth";
+  import { authenticated, auth, user, aid } from "$firebase";
 
-  let authenticated = false;
 
-  onAuthStateChanged(auth, (user: any) => {
-  if (user) {
-    const uid = user.uid;
-    authenticated = true;
-    // ...
-  } else {
-    authenticated = false;
-    // ...
-  }
-  });
+  let _user: any = $user;
+	
+  user.subscribe((data) => {
+	  _user = data;
+	});
+
 
   async function Logout () {
-    signOut(auth).then(() => {
+    signOut(auth()).then(() => {
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.
@@ -37,7 +32,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
         </label>
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
+        <ul tabindex="0" class="menu menu-compact dropdown-content p-2 bg-base-100 rounded-box w-52 shadow-lg">
           <li><a href="/products">Products</a></li>
           <li><a href="/about">About Us</a></li>
           <li><a href="/services">Services</a></li>
@@ -56,7 +51,7 @@
       </ul>
     </div>
     <div class="navbar-end">
-      {#if authenticated}
+      {#if $authenticated}
         <div class="dropdown dropdown-end">
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <!-- svelte-ignore a11y-label-has-associated-control -->
@@ -81,11 +76,14 @@
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label tabindex="0" class="btn btn-ghost w-fit">
-              <p>Karthic</p>
+              <p>{_user?.email}</p>
           </label>
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-0 p-2 shadow-lg bg-base-100 rounded-box w-52">
             <li><a href="/settings">Settings</a></li>
+            {#if _user.uid == aid}
+            <li><a href="/admin">Admin</a></li>
+            {/if}
             <li><button on:click={Logout} >Logout</button></li>
           </ul>
         </div>

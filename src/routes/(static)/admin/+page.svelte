@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import { user, aid } from '$firebase';
+
 function post() {
   // java api creation
 }
@@ -7,10 +9,10 @@ function post() {
 </script>
 
 <div class="flex min-h-screen w-full flex-col px-8 py-24">
-    <div class ="flex flex-col w-96 md:w-1/2 self-center gap-6">
+    <div class ="flex flex-col w-96 lg:w-1/3 self-center gap-6">
       <div class="form-control w-full">
           <label class="label">
-          <span class="label-text">Product name</span>
+          <span class="label-text">Product Name</span>
           </label>
           <input type="text" placeholder="Ex: Induced Pluripotent Stem Cells, Normal" class="input input-bordered w-full" />
       </div>
@@ -26,6 +28,6 @@ function post() {
           </label>
           <input type="number" placeholder="Ex: 100.00" class="input input-bordered w-full" />
       </div>
-      <input type="button" value="Submit" class="btn btn-primary my-4 w-full" on:click={post}>
+      <input type="button" value="Add Product" class="btn btn-primary my-4 w-full" on:click={post}>
   </div>
 </div>

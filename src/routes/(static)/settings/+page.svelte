@@ -12,7 +12,7 @@
 
 	async function Logout () {
 		signOut(auth()).then(() => {
-		// Sign-out successful.
+			window.location.href = '/';
 		}).catch((error) => {
 		// An error happened.
 		// what happens when errors happen?
@@ -33,7 +33,7 @@
 
 			<!-- Edit Email Button -->
 			<div class="flex flex-col justify-center">
-				<label for="edit-email-popup" class="btn btn-md btn-secondary w-42 self-end">Update Email</label>
+				<label for="edit-email-popup" class="btn btn-md btn-secondary w-48 self-end">Update Email</label>
 			</div>
 
 			<!-- Edit Email Popup -->
@@ -63,7 +63,7 @@
 
 			<!-- Update Password Button -->
 			<div class="flex flex-col justify-center">
-				<label for="edit-password-popup" class="btn btn-secondary w-42 self-end">Update Password</label>
+				<label for="edit-password-popup" class="btn btn-secondary w-48 self-end">Update Password</label>
 			</div>
 
 			<!-- Edit Password Popup -->

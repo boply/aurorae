@@ -30,8 +30,6 @@ const db = getFirestore();
 const storage = getStorage(app);
 
 export { auth, db, storage };
-<<<<<<< HEAD
-=======
 export const user = writable(null);
 
 onAuthStateChanged(auth, (User) => {
@@ -43,6 +41,3 @@ onAuthStateChanged(auth, (User) => {
       user.set(null);
   }
 });
-
-// this comment must be deleted
->>>>>>> 8de9000f651cdf8d726101c54b434e8bef4e7cea

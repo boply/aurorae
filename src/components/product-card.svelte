@@ -3,6 +3,11 @@
     import Counter from "../components/Counter.svelte";
 
     export let product: any;
+    let counter: number = 1;
+
+    async function post() {
+      console.log(counter)
+    }
 
 </script>
 
@@ -12,8 +17,8 @@
       <h2 class="card-title">{product.title}</h2>
       <p>{product.description}</p>
       <div class="card-actions justify-end flex flex-row">
-        <Counter/>
-        <button class="btn btn-primary">Add to Cart</button>
+        <Counter bind:number={counter}/>
+        <button class="btn btn-primary" on:click={post}>Add to Cart</button>
       </div>
     </div>
   </div>

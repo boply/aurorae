@@ -1,9 +1,10 @@
 <script lang="ts">
 
-	import { signOut } from "firebase/auth";
+	import { signOut, updateEmail, deleteUser } from "firebase/auth";
 	import { auth, user } from "$firebase";
 	
 	let _user: any = $user;
+	let email = _user.email;
 	
 	user.subscribe((data) => {
 		_user = data;
@@ -18,6 +19,25 @@
 		// what happens when errors happen?
 		});
 	}
+	
+	const changeEmail = () => {
+    const newEmail = document.getElementById('new-email-input').value;
+	updateEmail(_user, newEmail).then(() => {
+		console.log('Email updated successfully!');
+		email = _user.email;
+	}).catch((error) => {
+		console.log('Error updating email:', error);
+	});
+  }
+
+	const userdel = () => {  
+	deleteUser(_user).then(() => {
+		// User deleted.
+	}).catch((error) => {
+		// An error ocurred
+		// ...
+	});
+}
 
   </script>
 <div class="flex flex-col self-center w-full h-fit bg-base-100 shadow-xl rounded-lg p-4 mb-4 gap-2">
@@ -28,7 +48,7 @@
 		<div class="flex flex-row justify-between">
 			<div class="flex flex-col">
 				<span class="font-bold text-xs opacity-50">Email:</span>
-				<span class="text-md">{_user?.email}</span>
+				<span class="text-md">{email}</span>
 			</div>
 
 			<!-- Edit Email Button -->
@@ -47,7 +67,7 @@
 						<span class="font-bold text-md">New Email:</span>
 						<div class="flex flex-row justify-between">
 							<input type="text" placeholder="email..." class="input input-bordered" id="new-email-input" />
-							<label for="edit-email-popup" class="btn btn-primary self-center">Update Email</label>
+							<label for="edit-email-popup" class="btn btn-primary self-center" on:click={changeEmail}>Update Email</label>
 						</div>
 					</div>
 				</div>
@@ -109,7 +129,7 @@
 			<span class="w-fit opacity-70 text-center">Logout</span>
 		</btn>
 
-		<btn class="flex justify-between btn btn-ghost p-2 border-red-500">
+		<btn class="flex justify-between btn btn-ghost p-2 border-red-500" on:click={userdel}>
 			<button><span class="w-fit opacity-70 text-center">Delete Account</span></button>
 		</btn>
 	</div>

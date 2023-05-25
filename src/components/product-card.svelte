@@ -2,20 +2,23 @@
 
     import Counter from "../components/Counter.svelte";
 
-    export let title: string;
-    export let description: string;
-    export let image: string;
+    export let product: any;
+    let counter: number = 1;
+
+    async function post() {
+      console.log(counter)
+    }
 
 </script>
 
 <div class="card bg-base-100 shadow-xl max-h-96 w-96 box">
-    <figure class="h-1/2"><img src={image} alt="picture" /></figure>
+    <figure class="h-1/2"><img src={product.thumbnail} alt="picture" /></figure>
     <div class="card-body">
-      <h2 class="card-title">{title}</h2>
-      <p>{description}</p>
+      <h2 class="card-title">{product.title}</h2>
+      <p>{product.description}</p>
       <div class="card-actions justify-end flex flex-row">
-        <Counter/>
-        <button class="btn btn-primary">Add to Cart</button>
+        <Counter bind:number={counter}/>
+        <button class="btn btn-primary" on:click={post}>Add to Cart</button>
       </div>
     </div>
   </div>

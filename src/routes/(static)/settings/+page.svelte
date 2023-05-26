@@ -6,11 +6,14 @@
 	let _user: any = $user;
 	let email = _user.email;
 
-	let deleteUserPassword: string;
 	let newEmail: string;
+	let newEmailCurrentPassword: string;
+
 	let newPasswordCurrentPassword: string;
 	let newPassword: string;
 	let confirmNewPassword: string;
+
+	let deleteUserPassword: string;
 	
 	user.subscribe((data) => {
 		_user = data;
@@ -27,12 +30,14 @@
 	}
 	
 	const changeEmail = () => {
-		updateEmail(_user, newEmail).then(() => {
-			console.log('Email updated successfully!');
-			email = _user.email;
-		}).catch((error) => {
-			console.log('Error updating email:', error);
-		});
+		if (newEmailCurrentPassword == _user.password) {
+			updateEmail(_user, newEmail).then(() => {
+				console.log('Email updated successfully!');
+				email = _user.email;
+			}).catch((error) => {
+				console.log('Error updating email:', error);
+			});
+	}
   }
 
   const changePassword = () => {
@@ -86,8 +91,30 @@
 						<span class="font-bold text-md">New Email:</span>
 						<div class="flex flex-row justify-between">
 							<input type="text" placeholder="email..." class="input input-bordered" bind:value={newEmail}/>
-							<label for="edit-email-popup" class="btn btn-primary self-center" on:click={changeEmail}>Update Email</label>
 						</div>
+
+						<span class="font-bold text-md">Current Password:</span>
+						<div class="flex flex-row justify-between">
+							<input type="password" placeholder="password..." class="input input-bordered" bind:value={newEmailCurrentPassword} />
+							
+							
+							<label class="btn btn-circle btn-ghost swap swap-rotate absolute left-48" >
+
+								<!-- this hidden checkbox controls the state -->
+								<input type="checkbox" />
+								
+								<!--  icon -->
+								<div class="swap-on fill-current"></div>
+								
+								<!--  icon -->
+								<div class="swap-off fill-current"></div>
+								
+							</label>
+
+							<label for="edit-email-popup" class="btn btn-primary self-center" on:click={changeEmail}>Update Email</label>
+							
+						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -153,7 +180,7 @@
 							</label>
 							
 						</div>
-						<span class="font-bold text-md">Confirm Password:</span>
+						<span class="font-bold text-md">Confirm New Password:</span>
 						<div class="flex flex-row justify-between">
 							<input type="password" placeholder="password..." class="input input-bordered" bind:value={confirmNewPassword} />
 							<label for="edit-password-popup" class="btn btn-primary self-center" on:click={changePassword}>Update Password</label>

@@ -1,7 +1,7 @@
 <script>
 
-    import Card from "../../../components/Cart-Card.svelte";
-    import Checkout from "../../../components/Cart-Checkout.svelte";
+    import Card from "$components/Cart-Card.svelte";
+    import Checkout from "$components/Cart-Checkout.svelte";
 
 </script>
 <div class="flex flex-col min-h-screen w-full p-24">

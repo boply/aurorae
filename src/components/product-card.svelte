@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import Counter from "../components/Counter.svelte";
+    import Counter from "$components/Counter.svelte";
 
     export let product: any;
     let counter: number = 1;

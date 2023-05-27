@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Card from "../../../components/Product-Card.svelte";
+  import Card from "$/components/Card-Product.svelte";
 	
   /** @type {import('./$types').PageData} */
   export let data: any;

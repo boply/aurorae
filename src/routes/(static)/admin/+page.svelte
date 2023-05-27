@@ -1,6 +1,16 @@
 <script lang="ts">
 
 import { user, aid } from '$firebase';
+const options = {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      };
 
 function addProduct() {
   console.log("function");
@@ -15,7 +25,7 @@ function addProduct() {
      
      // Adding method type
      method: "POST",
-      
+    mode:"cors",
      // Adding headers to the request
      headers: {
          "Content-type": "application/json; charset=UTF-8"

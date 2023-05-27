@@ -3,7 +3,31 @@
 import { user, aid } from '$firebase';
 
 function addProduct() {
-  // java api creation
+  console.log("function");
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+  let description = document.getElementById("description").value;
+  let url = "https://auroraebackend.duckdns.org/api/products/add/" + name +"/" + price + "/" + description +"/1"
+  console.log(name);
+  console.log(price);
+  console.log(description);
+  fetch(url, {
+     
+     // Adding method type
+     method: "POST",
+      
+     // Adding headers to the request
+     headers: {
+         "Content-type": "application/json; charset=UTF-8"
+     }
+ })
+  
+ // Converting to JSON
+ .then(response => response.json())
+  
+ // Displaying results to console
+ .then(json => console.log(json));
+ 
 }
 
 function removeProduct() {
@@ -32,19 +56,19 @@ function updateProduct() {
               <label class="label">
               <span class="label-text">Product Name</span>
               </label>
-              <input type="text" placeholder="Ex: Induced Pluripotent Stem Cells, Normal" class="input input-bordered w-full" />
+              <input id = "name" type="text" placeholder="Ex: Induced Pluripotent Stem Cells, Normal" class="input input-bordered w-full" />
           </div>
           <div class="form-control">
               <label class="label">
                 <span class="label-text">Description</span>
               </label>
-              <textarea class="textarea textarea-bordered h-24" placeholder="Product Description"></textarea>
+              <textarea id = "description" class="textarea textarea-bordered h-24" placeholder="Product Description"></textarea>
             </div>
             <div class="form-control w-full">
               <label class="label">
               <span class="label-text">Price ($)</span>
               </label>
-              <input type="number" placeholder="Ex: 100.00" class="input input-bordered w-full" />
+              <input id="price" type="number" placeholder="Ex: 100.00" class="input input-bordered w-full" />
           </div>
           <input type="button" value="Add Product" class="btn btn-primary my-4 w-full" on:click={addProduct}>
       </div>

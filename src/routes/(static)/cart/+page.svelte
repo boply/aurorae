@@ -1,6 +1,6 @@
 <script>
 
-    import Card from "$components/Cart-Card.svelte";
+    import Card from "$components/Card-Cart.svelte";
     import Checkout from "$components/Cart-Checkout.svelte";
 
 </script>

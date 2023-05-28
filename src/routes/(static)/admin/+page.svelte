@@ -25,7 +25,6 @@ function addProduct() {
      
      // Adding method type
      method: "POST",
-    mode:"cors",
      // Adding headers to the request
      headers: {
          "Content-type": "application/json; charset=UTF-8"

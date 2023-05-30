@@ -1,4 +1,86 @@
-<h1>Players Database</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        text-align: center;
+    }
+    h1 {
+        padding-top: 4% ;
+        padding-bottom: 1%;
+        color: #009879;
+    }
+    input {
+        color:darkgreen;
+        font-size: 18px;
+    }
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+    th, td {
+        border: 1px solid;
+    }
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+    .styled-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+    }
+    button {
+        background-color: #c2fbd7;
+        border-radius: 100px;
+        box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+        color: green;
+        cursor: pointer;
+        display: inline-block;
+        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+        padding: 7px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 250ms;
+        border: 0;
+        font-size: 16px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+
+    button:hover {
+        box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+        transform: scale(1.05) rotate(-1deg);
+    }
+</style>
+
+
+
+<body>
+<h1>Database</h1>
 
 <table class="styled-table">
 
@@ -34,9 +116,9 @@
         };
     
         function send(){
-    var myVar = {"id" : 29};
+    var myVar = {"id" : 36};
     console.log("peopleData", document.getElementById('id').value);
-    fetch("http://localhost:8041/api/contact/", {
+    fetch("http://localhost:8093/api/fact/", {
         method: "POST",
         headers: {
             "Content-Type": "text/plain"
@@ -52,7 +134,7 @@
     function getPeople() {
 
         // Fetch data from API
-        fetch('http://localhost:8041/api/contact/')
+        fetch('http://localhost:8093/api/fact/')
         .then(response => response.json())
         .then(data => {
     
@@ -131,7 +213,7 @@ function addPeople(){
         method: 'POST',
     };
 
-    fetch( 'http://localhost:8041/api/contact/post' + "?email=" + email + "&playerFact=" + fact + "&name=" + name + "&dob=" + dob + "&teamsPlayedFor=" + teams + "&nationality=" + nation , options )
+    fetch( 'http://localhost:8093/api/fact/post' + "?email=" + email + "&playerFact=" + fact + "&name=" + name + "&dob=" + dob + "&teamsPlayedFor=" + teams + "&nationality=" + nation , options )
         .then(response => response.json())
         .then(data => {console.log(data);});
 
@@ -140,15 +222,15 @@ function addPeople(){
 function getId(id) {
     idResult = document.getElementById("idResult");
 
-    if(id < 29){
-        idResult.innerHTML = "Invalid ID. Player 0 has an ID of 29.";
+    if(id < 36){
+        idResult.innerHTML = "Invalid ID. Player 0 has an ID of 36.";
     }
     // Fetch data from API
-    fetch('http://localhost:8041/api/contact/' + id)
+    fetch('http://localhost:8093/api/fact/' + id)
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        idResult.innerHTML = "Player: " + data.message;
+        idResult.innerHTML = "Player: " + data.playerFact;
     })
 }
 
@@ -167,7 +249,7 @@ function getDeleteId(id) {
     };
 
     // Delete data from API
-    fetch('http://localhost:8041/api/contact/delete/' + id , options)
+    fetch('http://localhost:8093/api/fact/delete/' + id , options)
     .then(response => console.log(response.status));
     
 }
@@ -214,3 +296,8 @@ function getDeleteId(id) {
     <button onclick="getDeleteId()">Delete Player by ID</button>
 
 <p id="idDelete"></p>
+
+</body>
+    
+    
+

@@ -1,5 +1,46 @@
-<div class="flex min-h-screen w-full px-8 py-24 justify-center">
 
+  <script lang="ts">
+    var options = {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, *cors, same-origin
+            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'omit', // include, *same-origin, omit
+            headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded', 
+            },
+        };
+    
+        function send(){
+    var myVar = {"id" : 36};
+    console.log("peopleData", document.getElementById('id').value);
+    fetch("http://localhost:8093/api/contact/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain"
+        },
+        body: JSON.stringify(myVar)
+    }).then(function(response) {
+        return response.text();
+    }).then(function(muutuja){
+        document.getElementById('väljund').innerHTML = muutuja;
+    });
+}
+    const addPeople = () => {
+      var email = document.getElementById("inputEmail").value;
+      var company = document.getElementById("inputCompany").value;
+      var name = document.getElementById("inputName").value;
+      var message = document.getElementById("inputMsg").value;
+      const options = {
+        method: 'POST',
+      };
+      fetch( 'http://localhost:8093/api/contact/post/' + "?email=" + email + "&company=" + company + "&name=" + name + "&message=" + message , options )
+      .then(response => response.json())
+      .then(data => {console.log(data);});
+}
+
+  </script>
+  <div class="flex min-h-screen w-full px-8 py-24 justify-center">
     <!-- Other content -->
     <div class="isolate px-100 py-100 sm:py-200 lg:px-500">
         <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
@@ -14,31 +55,31 @@
             <div class="sm:col-span-2">
               <label class="block text-sm font-semibold leading-6 text-gray-900">Name</label>
               <div class="mt-2.5">
-                <input type="text" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
+                <input type="text" id="inputName" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
               </div>
             </div>
             <div class="sm:col-span-2">
               <label class="block text-sm font-semibold leading-6 text-gray-900">Company</label>
               <div class="mt-2.5">
-                <input type="text" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
+                <input type="text" id="inputCompany" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
               </div>
             </div>
             <div class="sm:col-span-2">
               <label class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
               <div class="mt-2.5">
-                <input type="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
+                <input type="email" id="inputEmail" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
               </div>
             </div>
             <div class="sm:col-span-2">
               <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Message</label>
               <input type= "message">
               <div class="mt-2.5">
-                <textarea rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                <textarea rows="4"  id="inputMsg" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
               </div>
             </div>
           </div>
           <div class="mt-10">
-            <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Let's talk</button>
+            <button on:click={addPeople} class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Let's talk</button>
           </div>
         </form>   
       </div>  

@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import Counter from "./Counter.svelte";
+    import Counter from "$components/Counter.svelte";
 
     export let title: string;
     export let description: string;

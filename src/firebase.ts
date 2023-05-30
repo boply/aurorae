@@ -43,6 +43,6 @@ onAuthStateChanged(auth(), (User) => {
 
 const db = getFirestore();
 const storage = getStorage(app);
-const aid = "c4p6wp5rTqSa0pzZ7XGDUe13od93"
+const aid = "TR7i9KDGkfbFolr0rSgLuuqrdfg2"
 
 export {db, storage, aid };

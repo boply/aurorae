@@ -1,0 +1,216 @@
+<h1>Players Database</h1>
+
+<table class="styled-table">
+
+  <tr id="nameRows">
+  </tr>
+
+  <tr id="idRows">
+  </tr>
+
+  <tr id="ageRows">
+  </tr>
+
+  <tr id="factRows">
+  </tr>
+
+  <tr id="nationalityRows">
+  </tr>
+
+</table>
+
+
+<script>
+ 
+ var options = {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, *cors, same-origin
+            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'omit', // include, *same-origin, omit
+            headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded', 
+            },
+        };
+    
+        function send(){
+    var myVar = {"id" : 29};
+    console.log("peopleData", document.getElementById('id').value);
+    fetch("http://localhost:8041/api/contact/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain"
+        },
+        body: JSON.stringify(myVar)
+    }).then(function(response) {
+        return response.text();
+    }).then(function(muutuja){
+        document.getElementById('väljund').innerHTML = muutuja;
+    });
+}
+
+    function getPeople() {
+
+        // Fetch data from API
+        fetch('http://localhost:8041/api/contact/')
+        .then(response => response.json())
+        .then(data => {
+    
+            peopleData = data;
+            console.log(peopleData);
+            
+            // get row elements
+            let nameRow = document.getElementById("nameRows");
+            let idRow = document.getElementById("idRows");
+            let ageRow = document.getElementById("ageRows");
+            let factRow = document.getElementById("factRows");
+            let nationalityRow = document.getElementById("nationalityRows");
+            
+            // clear table contents
+            for (let j = 0; j < peopleData.length; j++){    
+
+                nameRow.innerHTML = " ";
+                idRow.innerHTML = " ";
+                ageRow.innerHTML = " ";
+                factRow.innerHTML = " ";
+                nationalityRow.innerHTML = " ";
+
+            }
+
+            // add table contents
+            for (let i = 0; i < peopleData.length; i++){  
+
+                let header = document.createElement("th");
+                header.setAttribute("id", i);
+                header.innerHTML = peopleData[i].name;
+                nameRow.appendChild(header);
+
+                let newIdRow = document.createElement("td");
+                newIdRow.setAttribute("id", i);
+                newIdRow.innerHTML = "id: " + peopleData[i].id;
+                idRow.appendChild(newIdRow);
+
+                let newAgeRow = document.createElement("td");
+                newAgeRow.setAttribute("id", i);
+                newAgeRow.innerHTML = peopleData[i].age + " Years Old";
+                ageRow.appendChild(newAgeRow);
+
+
+                let newFactRow = document.createElement("td");
+                newFactRow.setAttribute("id", i);
+                newFactRow.innerHTML = peopleData[i].playerFact;
+                factRow.appendChild(newFactRow);  
+
+                let newNationalityRow = document.createElement("td");
+                newNationalityRow.setAttribute("id", i);
+                newNationalityRow.innerHTML = peopleData[i].nationality;
+                nationalityRow.appendChild(newNationalityRow);  
+            }
+
+        });
+
+}
+
+function getInputId(){
+    let input = document.getElementById("inputId").value;
+    console.log(input);
+    return input;
+}
+
+
+function addPeople(){
+
+    var email = document.getElementById("inputEmail").value;
+    var fact = document.getElementById("inputFact").value;
+    var name = document.getElementById("inputName").value;
+    var dob = document.getElementById("inputDob").value;
+    var teams = document.getElementById("inputTeams").value;
+    var nation = document.getElementById("inputNationality").value;
+
+    const options = {
+        method: 'POST',
+    };
+
+    fetch( 'http://localhost:8041/api/contact/post' + "?email=" + email + "&playerFact=" + fact + "&name=" + name + "&dob=" + dob + "&teamsPlayedFor=" + teams + "&nationality=" + nation , options )
+        .then(response => response.json())
+        .then(data => {console.log(data);});
+
+}
+
+function getId(id) {
+    idResult = document.getElementById("idResult");
+
+    if(id < 29){
+        idResult.innerHTML = "Invalid ID. Player 0 has an ID of 29.";
+    }
+    // Fetch data from API
+    fetch('http://localhost:8041/api/contact/' + id)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        idResult.innerHTML = "Player: " + data.message;
+    })
+}
+
+function getDeleteId(id) {
+    idDelete = document.getElementById("idDelete");
+    id = document.getElementById("deleteId").value;
+
+    if(id < 36){
+        idDelete.innerHTML = "Invalid ID. Player 0 has an ID of 36.";
+    } else {
+        idDelete.innterHTML = "Player Deleted";
+    }
+
+    const options = {
+        method: 'DELETE'
+    };
+
+    // Delete data from API
+    fetch('http://localhost:8041/api/contact/delete/' + id , options)
+    .then(response => console.log(response.status));
+    
+}
+
+</script>
+
+<button onclick="getPeople()">Click To Update Player Table</button>
+
+<h1>Get Player Fact by ID</h1>
+
+
+
+<input id="inputId" placeholder="Input Id">
+    <button onclick="getId(getInputId())">Get Player Data by ID</button>
+<br>
+<p id="idResult"></p>
+
+<h1>Create a New Player Entry</h1>
+
+<input id="inputEmail" placeholder="Input Your Email">
+
+
+<input id="inputFact" placeholder="Input Fact About Player">
+
+
+<input id="inputName" placeholder="Input Name of Player">
+
+
+<input id="inputDob" placeholder="MM-dd-yyyy of Player">
+
+
+<input id="inputTeams" placeholder="Input # of Teams Played For">
+
+
+<input id="inputNationality" placeholder="Input Nationality of Player">
+
+
+<button onclick="addPeople()">Submit New Player</button>
+
+
+<h1>Delete Player Entry by ID</h1>
+
+<input id="deleteId" placeholder="Input Id">
+    <button onclick="getDeleteId()">Delete Player by ID</button>
+
+<p id="idDelete"></p>

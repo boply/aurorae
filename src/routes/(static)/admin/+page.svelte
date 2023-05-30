@@ -1,9 +1,43 @@
 <script lang="ts">
 
 import { user, aid } from '$firebase';
+const options = {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      };
 
 function addProduct() {
-  // java api creation
+  console.log("function");
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+  let description = document.getElementById("description").value;
+  let url = "http://localhost:8093/api/products/add/" + name +"/" + price + "/" + description +"/1"
+  console.log(name);
+  console.log(price);
+  console.log(description);
+  fetch(url, {
+     
+     // Adding method type
+     method: "POST",
+     // Adding headers to the request
+     mode:"no-cors",
+     headers: {
+         "Content-type": "application/json; charset=UTF-8"
+     }
+ })
+  
+ // Converting to JSON
+ .then(response => response.json())
+  
+ // Displaying results to console
+ .then(json => console.log(json));
+ 
 }
 
 function removeProduct() {
@@ -18,47 +52,49 @@ function updateProduct() {
 
 
 <div class="flex min-h-screen w-full flex-col md:flex-row gap-10 px-8 py-24 justify-evenly">
-  <div class="w-96 lg:w-1/3 flex flex-col h-fit gap-8">
-  <!-- Add Products -->
-  <div class="collapse bg-base-100 shadow-xl rounded-lg p-8 self-center md:self-start h-fit w-full">
-    <input type="checkbox" />
-    <div class="collapse-title text-xl font-medium">
-      Add Product Panel
-    </div>
-    <div class="collapse-content flex flex-col gap-6">
-        <div class="form-control w-full">
-            <label class="label">
-            <span class="label-text">Product Name</span>
-            </label>
-            <input type="text" placeholder="Ex: Induced Pluripotent Stem Cells, Normal" class="input input-bordered w-full" />
-        </div>
-        <div class="form-control">
-            <label class="label">
-              <span class="label-text">Description</span>
-            </label>
-            <textarea class="textarea textarea-bordered h-24" placeholder="Product Decription"></textarea>
-          </div>
-          <div class="form-control w-full">
-            <label class="label">
-            <span class="label-text">Price ($)</span>
-            </label>
-            <input type="number" placeholder="Ex: 100.00" class="input input-bordered w-full" />
-        </div>
-        <input type="button" value="Add Product" class="btn btn-primary my-4 w-full" on:click={addProduct}>
-    </div>
-  </div>
+  
+  <div class="w-full md:w-1/3 flex flex-col h-fit gap-8 self-center md:self-start">
 
-  <!-- Remove Product -->
-  <div class="h-fit w-full bg-base-100 shadow-xl rounded-lg p-2 self-center md:self-start">
-    <input type="button" value="Remove Product" class="btn btn-primary my-4 h-full w-full" on:click={removeProduct}>
-  </div>
+    <!-- Add Products -->
+    <div class="collapse bg-base-100 shadow-xl rounded-lg p-4 self-center md:self-start h-fit w-full">
+      <input type="checkbox" />
+      <div class="collapse-title text-xl font-medium text-center">
+        Add Product Panel
+      </div>
+      <div class="collapse-content flex flex-col gap-6">
+          <div class="form-control w-full">
+              <label class="label">
+              <span class="label-text">Product Name</span>
+              </label>
+              <input id = "name" type="text" placeholder="Ex: Induced Pluripotent Stem Cells, Normal" class="input input-bordered w-full" />
+          </div>
+          <div class="form-control">
+              <label class="label">
+                <span class="label-text">Description</span>
+              </label>
+              <textarea id = "description" class="textarea textarea-bordered h-24" placeholder="Product Description"></textarea>
+            </div>
+            <div class="form-control w-full">
+              <label class="label">
+              <span class="label-text">Price ($)</span>
+              </label>
+              <input id="price" type="number" placeholder="Ex: 100.00" class="input input-bordered w-full" />
+          </div>
+          <input type="button" value="Add Product" class="btn btn-primary my-4 w-full" on:click={addProduct}>
+      </div>
+    </div>
+
+    <!-- Remove Product -->
+    <div class="w-full bg-base-100 shadow-xl rounded-lg p-8 self-center md:self-start">
+      <input type="button" value="Remove Product" class="btn btn-primary h-full w-full" on:click={removeProduct}>
+    </div>
 
 
 </div>
 
 
   <!-- Table -->
-  <div class="overflow-x-auto w-96 lg:w-2/3 self-center md:self-start bg-base-100 shadow-xl rounded-lg p-8">
+  <div class="overflow-x-auto w-full md:w-2/3 self-center md:self-start bg-base-100 shadow-xl rounded-lg">
     <table class="table w-full">
       <!-- head -->
       <thead>
@@ -81,7 +117,7 @@ function updateProduct() {
           </th>
           <td>
             <div class="flex items-center space-x-3">
-                <div class="font-bold">Hart Hagerty</div>
+                <div class="font-bold">Hart Hagerty erag sd fg sdfg fasdfasdfasdf</div>
             </div>
           </td>
           <td>

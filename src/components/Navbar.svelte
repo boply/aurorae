@@ -76,7 +76,7 @@
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label tabindex="0" class="btn btn-ghost w-fit">
-              <p>{_user?.email}</p>
+              <p>{_user.email}</p>
           </label>
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-0 p-2 shadow-lg bg-base-100 rounded-box w-52">

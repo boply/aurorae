@@ -49,6 +49,7 @@
 </div>
 </div>
         </div>  
+        
         <div class="hero min-h-screen bg-base-200">
             <div class="hero-content flex-col sm:flex-row-reverse">
               <img src="https://hdqwalls.com/download/1/aurora-borealis-moon-night-ce-3840x2400.jpg" class="max-w-sm rounded-lg shadow-2xl" />

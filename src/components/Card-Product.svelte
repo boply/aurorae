@@ -12,10 +12,10 @@
 </script>
 
 <div class="card bg-base-100 shadow-xl max-h-96 w-96 box">
-    <figure class="h-1/2"><img src={product.thumbnail} alt="picture" /></figure>
+    <figure class="h-1/2"><img src={product.THUMBNAIL} alt="picture" /></figure> 
     <div class="card-body">
-      <h2 class="card-title">{product.title}</h2>
-      <p>{product.description}</p>
+      <h2 class="card-title">{product.NAME}</h2>
+      <p>{product.DESCRIPTION}</p>
       <div class="card-actions justify-end flex flex-row">
         <Counter bind:number={counter}/>
         <button class="btn btn-primary" on:click={post}>Add to Cart</button>

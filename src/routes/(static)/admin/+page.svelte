@@ -17,7 +17,7 @@ function addProduct() {
   let name = document.getElementById("name").value;
   let price = document.getElementById("price").value;
   let description = document.getElementById("description").value;
-  let url = "https://auroraebackend.duckdns.org/api/products/add/" + name +"/" + price + "/" + description +"/1"
+  let url = "http://localhost:8093/api/products/add/" + name +"/" + price + "/" + description +"/1"
   console.log(name);
   console.log(price);
   console.log(description);
@@ -26,6 +26,7 @@ function addProduct() {
      // Adding method type
      method: "POST",
      // Adding headers to the request
+     mode:"no-cors",
      headers: {
          "Content-type": "application/json; charset=UTF-8"
      }

@@ -4,7 +4,6 @@
   /** @type {import('./$types').PageData} */
   export let data: any;
   let products = data.products;
-  //let products = [data.products.products];
 
 </script>
 
@@ -13,7 +12,6 @@
   
   
   {#each products as product}
-    
     <Card product={product} />
   {/each}
 

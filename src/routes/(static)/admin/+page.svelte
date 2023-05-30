@@ -26,9 +26,9 @@ function addProduct() {
      // Adding method type
      method: "POST",
      // Adding headers to the request
-     mode:"no-cors",
+     mode:"cors",
      headers: {
-         "Content-type": "application/json; charset=UTF-8"
+         'Content-type': 'application/json; charset=UTF-8'
      }
  })
   
@@ -37,8 +37,13 @@ function addProduct() {
   
  // Displaying results to console
  .then(json => console.log(json));
+
  
 }
+
+
+
+
 
 function removeProduct() {
   // java api creation

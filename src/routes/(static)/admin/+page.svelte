@@ -12,7 +12,7 @@ const options = {
         },
       };
 
-function addProduct() {
+async function addProduct() {
   console.log("function");
   let name = document.getElementById("name").value;
   let price = document.getElementById("price").value;
@@ -21,14 +21,14 @@ function addProduct() {
   console.log(name);
   console.log(price);
   console.log(description);
-  fetch(url, {
+  await fetch(url, {
      
      // Adding method type
      method: "POST",
      // Adding headers to the request
      mode:"cors",
      headers: {
-         'Content-type': 'application/json; charset=UTF-8'
+         'Content-type': 'application/json;'
      }
  })
   

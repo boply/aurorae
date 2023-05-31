@@ -90,13 +90,13 @@
   <tr id="idRows">
   </tr>
 
-  <tr id="ageRows">
+  <tr id="companyRows">
   </tr>
 
-  <tr id="factRows">
+  <tr id="messageRows">
   </tr>
 
-  <tr id="nationalityRows">
+  <tr id="emailRows">
   </tr>
 
 </table>
@@ -114,79 +114,63 @@
             // 'Content-Type': 'application/x-www-form-urlencoded', 
             },
         };
-    
-        function send(){
-    var myVar = {"id" : 36};
-    console.log("peopleData", document.getElementById('id').value);
-    fetch("http://localhost:8093/api/fact/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "text/plain"
-        },
-        body: JSON.stringify(myVar)
-    }).then(function(response) {
-        return response.text();
-    }).then(function(muutuja){
-        document.getElementById('väljund').innerHTML = muutuja;
-    });
-}
 
     function getPeople() {
 
         // Fetch data from API
-        fetch('http://localhost:8093/api/fact/')
+        fetch('http://localhost:8093/api/contact/')
         .then(response => response.json())
         .then(data => {
     
-            peopleData = data;
-            console.log(peopleData);
+            contactsData = data;
+            console.log(contactsData);
             
             // get row elements
             let nameRow = document.getElementById("nameRows");
             let idRow = document.getElementById("idRows");
-            let ageRow = document.getElementById("ageRows");
-            let factRow = document.getElementById("factRows");
-            let nationalityRow = document.getElementById("nationalityRows");
+            let companyRow = document.getElementById("companyRows");
+            let messageRow = document.getElementById("messageRows");
+            let emailRow = document.getElementById("emailRows");
             
             // clear table contents
-            for (let j = 0; j < peopleData.length; j++){    
+            for (let j = 0; j < contactsData.length; j++){    
 
                 nameRow.innerHTML = " ";
                 idRow.innerHTML = " ";
-                ageRow.innerHTML = " ";
-                factRow.innerHTML = " ";
-                nationalityRow.innerHTML = " ";
+                companyRow.innerHTML = " ";
+                messageRow.innerHTML = " ";
+                emailRow.innerHTML = " ";
 
             }
 
             // add table contents
-            for (let i = 0; i < peopleData.length; i++){  
+            for (let i = 0; i < contactsData.length; i++){  
 
                 let header = document.createElement("th");
                 header.setAttribute("id", i);
-                header.innerHTML = peopleData[i].name;
+                header.innerHTML = contactsData[i].name;
                 nameRow.appendChild(header);
 
                 let newIdRow = document.createElement("td");
                 newIdRow.setAttribute("id", i);
-                newIdRow.innerHTML = "id: " + peopleData[i].id;
+                newIdRow.innerHTML = "id: " + contactsData[i].id;
                 idRow.appendChild(newIdRow);
 
-                let newAgeRow = document.createElement("td");
-                newAgeRow.setAttribute("id", i);
-                newAgeRow.innerHTML = peopleData[i].age + " Years Old";
-                ageRow.appendChild(newAgeRow);
+                let newCompanyRow = document.createElement("td");
+                newCompanyRow.setAttribute("id", i);
+                newCompanyRow.innerHTML = contactsData[i].company;
+                companyRow.appendChild(newCompanyRow);
 
 
-                let newFactRow = document.createElement("td");
-                newFactRow.setAttribute("id", i);
-                newFactRow.innerHTML = peopleData[i].playerFact;
-                factRow.appendChild(newFactRow);  
+                let newMessageRow = document.createElement("td");
+                newMessageRow.setAttribute("id", i);
+                newMessageRow.innerHTML = contactsData[i].message;
+                messageRow.appendChild(newMessageRow);  
 
-                let newNationalityRow = document.createElement("td");
-                newNationalityRow.setAttribute("id", i);
-                newNationalityRow.innerHTML = peopleData[i].nationality;
-                nationalityRow.appendChild(newNationalityRow);  
+                let newEmailRow = document.createElement("td");
+                newEmailRow.setAttribute("id", i);
+                newEmailRow.innerHTML = contactsData[i].email;
+                emailRow.appendChild(newEmailRow);  
             }
 
         });
@@ -201,21 +185,18 @@ function getInputId(){
 
 
 function addPeople(){
-
+    
     var email = document.getElementById("inputEmail").value;
-    var fact = document.getElementById("inputFact").value;
+    var company = document.getElementById("inputCompany").value;
     var name = document.getElementById("inputName").value;
-    var dob = document.getElementById("inputDob").value;
-    var teams = document.getElementById("inputTeams").value;
-    var nation = document.getElementById("inputNationality").value;
+    var message = document.getElementById("inputMsg").value;
 
     const options = {
         method: 'POST',
     };
-
-    fetch( 'http://localhost:8093/api/fact/post' + "?email=" + email + "&playerFact=" + fact + "&name=" + name + "&dob=" + dob + "&teamsPlayedFor=" + teams + "&nationality=" + nation , options )
-        .then(response => response.json())
-        .then(data => {console.log(data);});
+    fetch( 'http://localhost:8093/api/contact/post/' + "?email=" + email + "&company=" + company + "&name=" + name + "&message=" + message , options )
+    .then(response => response.json())
+    .then(data => {console.log(data);});
 
 }
 
@@ -249,7 +230,7 @@ function getDeleteId(id) {
     };
 
     // Delete data from API
-    fetch('http://localhost:8093/api/fact/delete/' + id , options)
+    fetch('http://localhost:8093/api/contact/delete/' + id , options)
     .then(response => console.log(response.status));
     
 }
@@ -272,19 +253,13 @@ function getDeleteId(id) {
 <input id="inputEmail" placeholder="Input Your Email">
 
 
-<input id="inputFact" placeholder="Input Fact About Player">
+<input id="inputCompany" placeholder="Input Fact About Player">
 
 
 <input id="inputName" placeholder="Input Name of Player">
 
 
-<input id="inputDob" placeholder="MM-dd-yyyy of Player">
-
-
-<input id="inputTeams" placeholder="Input # of Teams Played For">
-
-
-<input id="inputNationality" placeholder="Input Nationality of Player">
+<textarea id="inputMsg" placeholder="MM-dd-yyyy of Player"></textarea>
 
 
 <button onclick="addPeople()">Submit New Player</button>

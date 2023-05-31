@@ -12,7 +12,7 @@ const options = {
         },
       };
 
-function addProduct() {
+async function addProduct() {
   console.log("function");
   let name = document.getElementById("name").value;
   let price = document.getElementById("price").value;
@@ -21,14 +21,14 @@ function addProduct() {
   console.log(name);
   console.log(price);
   console.log(description);
-  fetch(url, {
+  await fetch(url, {
      
      // Adding method type
      method: "POST",
      // Adding headers to the request
-     mode:"no-cors",
+     mode:"cors",
      headers: {
-         "Content-type": "application/json; charset=UTF-8"
+         'Content-type': 'application/json;'
      }
  })
   
@@ -37,8 +37,13 @@ function addProduct() {
   
  // Displaying results to console
  .then(json => console.log(json));
+
  
 }
+
+
+
+
 
 function removeProduct() {
   // java api creation
@@ -46,6 +51,68 @@ function removeProduct() {
 
 function updateProduct() {
   // java api creation
+}
+
+const getContacts = () => {
+
+// Fetch data from API
+fetch('http://localhost:8093/api/contact/')
+.then(response => response.json())
+.then(data => {
+
+    let contactsData = data;
+    console.log(contactsData);
+    
+    // get row elements
+    let nameRow = document.getElementById("nameRows");
+    let idRow = document.getElementById("idRows");
+    let companyRow = document.getElementById("companyRows");
+    let messageRow = document.getElementById("messageRows");
+    let emailRow = document.getElementById("emailRows");
+    
+    // clear table contents
+    for (let j = 0; j < contactsData.length; j++){    
+
+        nameRow.innerHTML = " ";
+        idRow.innerHTML = " ";
+        companyRow.innerHTML = " ";
+        messageRow.innerHTML = " ";
+        emailRow.innerHTML = " ";
+
+    }
+
+    // add table contents
+    for (let i = 0; i < contactsData.length; i++){  
+
+        let header = document.createElement("th");
+        header.setAttribute("id", i);
+        header.innerHTML = contactsData[i].name;
+        nameRow.appendChild(header);
+
+        let newIdRow = document.createElement("td");
+        newIdRow.setAttribute("id", i);
+        newIdRow.innerHTML = "id: " + contactsData[i].id;
+        idRow.appendChild(newIdRow);
+
+        let newCompanyRow = document.createElement("td");
+        newCompanyRow.setAttribute("id", i);
+        newCompanyRow.innerHTML = contactsData[i].company;
+        companyRow.appendChild(newCompanyRow);
+
+
+        let newMessageRow = document.createElement("td");
+        newMessageRow.setAttribute("id", i);
+        newMessageRow.innerHTML = contactsData[i].message;
+        messageRow.appendChild(newMessageRow);  
+
+        let newEmailRow = document.createElement("td");
+        newEmailRow.setAttribute("id", i);
+        newEmailRow.innerHTML = contactsData[i].email;
+        emailRow.appendChild(newEmailRow);  
+    }
+
+});
+
 }
 
 </script>
@@ -88,6 +155,8 @@ function updateProduct() {
     <div class="w-full bg-base-100 shadow-xl rounded-lg p-8 self-center md:self-start">
       <input type="button" value="Remove Product" class="btn btn-primary h-full w-full" on:click={removeProduct}>
     </div>
+
+    
 
 
 </div>
@@ -132,5 +201,34 @@ function updateProduct() {
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- View Contact Forms-->
+  <div class="collapse bg-base-100 shadow-xl rounded-lg p-4 self-center md:self-start h-full w-full">
+    <input type="checkbox"/>
+    <div class="collapse-title text-xl font-medium text-center">
+      Contacts
+    </div>
+    <div class="collapse-content flex flex-col gap-6">
+      <button class="btn" on:click={getContacts}>Get Latest Data</button>
+      <table>
+
+        <tr id="nameRows">
+        </tr>
+      
+        <tr id="idRows">
+        </tr>
+      
+        <tr id="companyRows">
+        </tr>
+      
+        <tr id="messageRows">
+        </tr>
+      
+        <tr id="emailRows">
+        </tr>
+      
+      </table>
+    </div>
   </div>
 </div>

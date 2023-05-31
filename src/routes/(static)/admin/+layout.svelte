@@ -5,7 +5,6 @@ let _user: any;
 	
 user.subscribe(async (data) => {
     _user = data;
-    console.log(_user);
 });
 
 </script>

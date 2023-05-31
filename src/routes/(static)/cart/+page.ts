@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-    const res = await fetch(`http://localhost:8093/api/cart/getCart`, {
+    const res = await fetch(`http://localhost:8093/api/cart/getCart/`, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         // cache: "default", // *default, no-cache, reload, force-cache, only-if-cached

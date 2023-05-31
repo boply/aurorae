@@ -12,7 +12,7 @@
 <div class="flex flex-col min-h-screen w-full py-24 px-8 lg:px-24">
     <div class="flex full lg:w-1/2 md:w-3/4 w-full justify-center gap-8">
         {#each products as product}
-            <Card product={product} />
+            <Card product={product} item={product.ITEM} />
         {/each}
     </div>
 

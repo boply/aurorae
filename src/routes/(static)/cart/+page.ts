@@ -14,7 +14,6 @@ export async function load({ fetch }) {
   });
     const products: any[] = (await res.json())["data"]; // Assuming 'products' is an array of any type
     console.log({ products });
-    console.log("adfaf");
     console.log(products[0])
     return {products};
 }

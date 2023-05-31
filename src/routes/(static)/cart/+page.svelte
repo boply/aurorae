@@ -2,8 +2,15 @@
 
     import Card from "$components/Card-Cart.svelte";
     import Checkout from "$components/Cart-Checkout.svelte";
+    // import { user } from "$firebase";
 
-     /** @type {import('./$types').PageData} */
+    // let _user: any = $user;
+	
+    // user.subscribe((data) => {
+	//   _user = data;
+	// });
+    
+    /** @type {import('./$types').PageData} */
     export let data: any;
     let products = data.products;
     

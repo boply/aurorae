@@ -12,26 +12,26 @@ const options = {
         },
       };
 
-      const addProduct = () => {
-        
-        var name = document.getElementById("prodName").value;
-        var description = document.getElementById("prodDescrip").value;
-        var price = document.getElementById("prodPrice").value;
+const addProduct = () => {
+  
+  var name = document.getElementById("prodName").value;
+  var description = document.getElementById("prodDescrip").value;
+  var price = document.getElementById("prodPrice").value;
 
-        const options = {
-            method: 'POST',
-        };
-        fetch( 'http://localhost:8093/api/products/add/' + name + "/" + price + "/" + description + "/1" , options )
-        .then(response => response.json())
-        .then(data => {console.log(data);});
-
-
-        document.getElementById("prodName").value = "";
-        document.getElementById("prodDescrip").value = "";
-        document.getElementById("prodPrice").value = "";
+  const options = {
+      method: 'POST',
+  };
+  fetch( 'http://localhost:8093/api/products/add/' + name + "/" + price + "/" + description + "/1" , options )
+  .then(response => response.json())
+  .then(data => {console.log(data);});
 
 
-    }
+  document.getElementById("prodName").value = "";
+  document.getElementById("prodDescrip").value = "";
+  document.getElementById("prodPrice").value = "";
+
+
+}
 
 
 

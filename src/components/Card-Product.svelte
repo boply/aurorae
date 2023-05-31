@@ -5,18 +5,31 @@
     export let product: any;
     let counter: number = 1;
 
-    async function post(id) {
-      let url = "http://localhost:8093/api/cart/addItem/" + id+"/user/" + counter + "/135" 
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+const addProduct = () => {
+  let id = product.ID;
+  console.log(product.ID);
+  var user = "dummy"
+  var quantity = counter;
+  var uid = 3531;
 
-    }
+  const options = {
+      method: 'POST',
+  };
+  fetch( 'http://localhost:8093/api/cart/addItem/' + id + "/" + user + "/" + quantity + "/"+uid , options )
+  .then(response => response.json())
+  .then(data => {console.log(data);});
+
+
+  document.getElementById("prodName").value = "";
+  document.getElementById("prodDescrip").value = "";
+  document.getElementById("prodPrice").value = "";
+
+
+}
+
+
+
+
 
 </script>
 
@@ -25,9 +38,10 @@
     <div class="card-body">
       <h2 style="text-transform:uppercase;" class="card-title">{product.NAME}</h2>
       <p>{product.DESCRIPTION}</p>
+      <p id="id">{product.ID}</p>
       <div class="card-actions justify-end flex flex-row">
         <Counter bind:number={counter}/>
-        <button class="btn btn-primary" on:click={post(product.ID)}>Add to Cart</button>
+        <button class="btn btn-primary" on:click={addProduct}>Add to Cart</button>
       </div>
     </div>
   </div>

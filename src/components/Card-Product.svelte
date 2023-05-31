@@ -34,7 +34,7 @@ const addProduct = () => {
 </script>
 
 <div class="card bg-base-100 shadow-xl max-h-96 w-96 box">
-    <figure class="h-1/2"><img src={product.THUMBNAIL} alt="picture" /></figure> 
+    <figure class="h-1/2"><img src={product.IMAGE} alt="picture" /></figure> 
     <div class="card-body">
       <h2 style="text-transform:uppercase;" class="card-title">{product.NAME}</h2>
       <p>{product.DESCRIPTION}</p>

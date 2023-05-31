@@ -134,8 +134,7 @@ function updateProduct() {
     <div class="collapse-title text-xl font-medium text-center">
       Contacts
     </div>
-    <div class="collapse-content flex flex-col gap-6">
-      <button class="btn btn-primary">Get Latest Data</button>
+    <div class="collapse-content flex flex-col gap-6 overflow-x-auto w-full ">
       <table id="productsTable" class="table w-full">
         <!-- head -->
         <thead>

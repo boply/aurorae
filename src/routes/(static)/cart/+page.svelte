@@ -1,13 +1,19 @@
-<script>
+<script lang="ts">
 
     import Card from "$components/Card-Cart.svelte";
     import Checkout from "$components/Cart-Checkout.svelte";
 
+     /** @type {import('./$types').PageData} */
+    export let data: any;
+    let products = data.products;
+    
 </script>
 
 <div class="flex flex-col min-h-screen w-full py-24 px-8 lg:px-24">
-    <div class="flex full lg:w-1/2 w-full justify-center gap-8">
-        <Card title="Neural Stem Cells" description="Derived from iPSCs" image="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2018/10/stem-cells.jpg?w=1155&h=1541" />
+    <div class="flex full lg:w-1/2 md:w-3/4 w-full justify-center gap-8">
+        {#each products as product}
+            <Card product={product} />
+        {/each}
     </div>
 
     <div class="lg:flex flex-col justify-center hidden">

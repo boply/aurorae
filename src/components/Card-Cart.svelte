@@ -15,7 +15,7 @@
     <figure class="h-4 w-full"><img src={product.THUMBNAIL} alt="picture" /></figure>
     <div class="card-body">
       <button class="btn btn-sm btn-circle btn-secondary absolute -right-2 -top-2">X</button>
-      <h2 class="card-title">{product.TITLE}</h2>
+      <h2 class="card-title">{product.NAME}</h2>
       <p>{product.DESCRIPTION}</p>
       <div class="card-actions justify-end flex flex-row">
         <Counter/>

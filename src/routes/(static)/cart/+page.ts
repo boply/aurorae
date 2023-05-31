@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-    const res = await fetch(`http://localhost:8093/api/products/getProducts`, {
+    const res = await fetch(`http://localhost:8093/api/cart/getCart`, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         // cache: "default", // *default, no-cache, reload, force-cache, only-if-cached
@@ -13,5 +13,8 @@ export async function load({ fetch }) {
     },
   });
     const products: any[] = (await res.json())["data"]; // Assuming 'products' is an array of any type
+    console.log({ products });
+    console.log("adfaf");
+    console.log(products[0])
     return {products};
 }

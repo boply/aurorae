@@ -106,8 +106,38 @@ fetch('http://localhost:8093/api/contact/')
     }
 
 });
+}
+
+const showProducts = () => {
+  fetch('http://localhost:8093/api/products/getProducts')
+.then(response => response.json())
+.then(data => {
+  console.log(data["data"]);
+  let table = document.getElementById("productsTable");
+  for (let i =0;i<data["data"].length;i++) {
+    var row = table.insertRow(1);
+    var prodID = row.insertCell(0);
+    var name = row.insertCell(1);
+    var price = row.insertCell(2);
+    var description = row.insertCell(3);
+    var instock = row.insertCell(4);
+    prodID.innerText = data["data"][i]["ID"];
+    name.innerText = data["data"][i]["NAME"];
+    price.innerText = data["data"][i]["PRICE"];
+    description.innerText = data["data"][i]["DESCRIPTION"];
+    if (data["data"][i]["INSTOCK"] == "0") {
+      instock.innerText = "no";
+    } else {
+      instock.innerText = "yes";
+    }
+    
+
+
+  }
+})
 
 }
+showProducts();
 
 </script>
 
@@ -158,11 +188,11 @@ fetch('http://localhost:8093/api/contact/')
 
   <!-- Table -->
   <div class="overflow-x-auto w-full md:w-2/3 self-center md:self-start bg-base-100 shadow-xl rounded-lg">
-    <table class="table w-full">
+    <table id="productsTable" class="table w-full">
       <!-- head -->
       <thead>
         <tr>
-          <th></th>
+          <th>ID</th>
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
@@ -171,28 +201,7 @@ fetch('http://localhost:8093/api/contact/')
         </tr>
       </thead>
       <tbody>
-        <!-- row 1 -->
-        <tr>
-          <th>
-            <label>
-              <input type="checkbox" class="checkbox" />
-            </label>
-          </th>
-          <td>
-            <div class="flex items-center space-x-3">
-                <div class="font-bold">Hart Hagerty erag sd fg sdfg fasdfasdfasdf</div>
-            </div>
-          </td>
-          <td>
-            stem cells are blah blah blah...
-          </td>
-          <td>$1000.00</td>
-          <th>
-            <label>
-              <input type="checkbox" class="checkbox" />
-            </label>
-          </th>
-        </tr>
+        <tr></tr>
       </tbody>
     </table>
   </div>

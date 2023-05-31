@@ -33,7 +33,7 @@
 </script>
 
 <div class="card bg-base-100 shadow-xl max-h-96 h-fit w-full box">
-    <figure class="h-4 w-full"><img src={product.THUMBNAIL} alt="picture" /></figure>
+    <figure class="h-4 w-full"><img src={product.IMAGE} alt="picture" /></figure>
     <div class="card-body">
       <button class="btn btn-sm btn-circle btn-secondary absolute -right-2 -top-2">X</button>
       <h2 id="title" class="card-title">Item Number: {product.ITEM}</h2>

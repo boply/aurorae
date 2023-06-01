@@ -19,27 +19,17 @@ const addProduct = () => {
   .then(response => response.json())
   .then(data => {console.log(data);});
 
-
-  document.getElementById("prodName").value = "";
-  document.getElementById("prodDescrip").value = "";
-  document.getElementById("prodPrice").value = "";
-
-
 }
-
-
-
-
 
 </script>
 
-<div class="card bg-base-100 shadow-xl max-h-96 w-96 box">
-    <figure class="h-1/2"><img src={product.IMAGE} alt="picture" /></figure> 
-    <div class="card-body">
-      <h2 style="text-transform:uppercase;" class="card-title">{product.NAME}</h2>
+<div class="card bg-base-100 shadow-xl h-fit w-96 box">
+    <figure class="h-32"><img src={product.IMAGE} alt="picture" /></figure> 
+    <div class="card-body gap-4">
+      <h2 class="card-title">{product.NAME}</h2>
       <p>{product.DESCRIPTION}</p>
-      <p id="id">{product.ID}</p>
-      <div class="card-actions justify-end flex flex-row">
+      <div class="w-fit font-bold text-2xl self-end">${product.PRICE}</div>
+      <div class="card-actions justify-end gap-6 flex flex-row">
         <Counter bind:number={counter}/>
         <button class="btn btn-primary" on:click={addProduct}>Add to Cart</button>
       </div>

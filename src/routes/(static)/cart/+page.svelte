@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex flex-row min-h-screen w-full py-24 px-8 lg:px-24">
-    <div class="flex flex-col lg:w-1/2 md:w-3/4 w-full justify-center gap-10">
+    <div class="flex flex-col lg:w-1/2 md:w-3/4 w-full gap-10">
         {#each products as product}
             <Card product={product} />
         {/each}

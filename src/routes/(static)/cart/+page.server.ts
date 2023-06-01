@@ -1,5 +1,6 @@
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ fetch }) {
+
     const res = await fetch(`http://localhost:8093/api/cart/getCart/`, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin

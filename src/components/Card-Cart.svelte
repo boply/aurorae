@@ -32,7 +32,7 @@
 </script>
 
 <div class="card bg-base-100 shadow-xl max-h-96 h-fit w-full box">
-    <figure class="h-4 w-full"><img src={product.product[0].IMAGE} alt="picture" /></figure>
+    <figure class="h-4 w-full"><img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/News/070116_stemcelltourism_THUMB_LARGE.jpg?w=1155&h=1528" alt="picture" /></figure>
     <div class="card-body gap-4">
       <button class="btn btn-sm btn-circle btn-secondary absolute -right-2 -top-2">X</button>
       <h2 id="title" class="card-title">{product.product[0].NAME}</h2>

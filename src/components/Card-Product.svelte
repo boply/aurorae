@@ -24,7 +24,7 @@ const addProduct = () => {
 </script>
 
 <div class="card bg-base-100 shadow-xl h-fit w-96 box">
-    <figure class="h-32"><img src={product.IMAGE} alt="picture" /></figure> 
+    <figure class="h-32"><img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/News/070116_stemcelltourism_THUMB_LARGE.jpg?w=1155&h=1528" alt="picture" /></figure> 
     <div class="card-body gap-4">
       <h2 class="card-title">{product.NAME}</h2>
       <p>{product.DESCRIPTION}</p>

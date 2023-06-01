@@ -7,7 +7,7 @@
     ];
 
     function sumProducts( product:any ) {
-        sum += parseFloat(product.product[0].PRICE)
+        sum += parseFloat(product.product[0].PRICE)*product.QUANTITY
     }
 
     export let products: any;
@@ -30,5 +30,5 @@
     <p>Products: ${sum}</p>
     <p>Tax: ${tax}</p>
     <p>Total: ${total}</p>
-    <a href="/checkout" class="btn btn-primary">Checkout Cart</a>
+    <a href="/checkout" class="btn btn-primary hidden">Checkout Cart</a>
 </div>

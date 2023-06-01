@@ -12,10 +12,8 @@
     // input-base-error for wrong username/password
 	let emailBoxOutline = "input-base-100"
     let passwordBoxOutline = "input-base-100"
-    let nameBoxOutline = "input-base-100"
 
     async function post() {
-        // /api/login/getYourUser
         if (password == confirmPassword) {
             createUserWithEmailAndPassword(auth(), email, password)
             .then((userCredential) => {

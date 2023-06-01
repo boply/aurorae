@@ -1,8 +1,8 @@
-<script src="https://core.spreedly.com/iframe/iframe-v1.min.js"> 
-</script>
 
 
 <script lang="ts">
+
+import "https://core.spreedly.com/iframe/iframe-v1.min.js";
 
     Spreedly.on("ready", function () {
     var submitButton = document.getElementById('submit-button');
@@ -12,6 +12,36 @@
     Spreedly.init("8ggqGg4czIQy4K4uOZwMLUnDmUP", {
     "numberEl": "spreedly-number",
     "cvvEl": "spreedly-cvv"
+    });
+
+    function submitPaymentForm() {
+
+        var requiredFields = {};
+
+        // Get required, non-sensitive, values from host page
+        requiredFields["full_name"] = document.getElementById("full_name").value;
+        requiredFields["month"] = document.getElementById("month").value;
+        requiredFields["year"] = document.getElementById("year").value;
+
+        Spreedly.tokenizeCreditCard(requiredFields);
+    }
+
+    Spreedly.on('errors', function(errors) {
+        for (var i=0; i < errors.length; i++) {
+            var error = errors[i];
+            console.log(error);
+        };
+    });
+
+    Spreedly.on('paymentMethod', function(token, pmData) {
+
+        // Set the token in the hidden form field
+        var tokenField = document.getElementById("payment_method_token");
+        tokenField.setAttribute("value", token);
+
+        // Submit the form
+        var masterForm = document.getElementById('payment-form');
+        masterForm.submit();
     });
 
 </script>

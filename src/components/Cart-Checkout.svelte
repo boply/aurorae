@@ -7,7 +7,7 @@
     ];
 
     function sumProducts( product:any ) {
-        sum += product.PRICE;
+        sum += parseFloat(product.product[0].PRICE)
     }
 
     export let products: any;
@@ -16,7 +16,7 @@
 
     let sum: number = 0;
 
-    test.forEach(sumProducts);
+    products.forEach(sumProducts);
     tax = sum*0.08;
     tax = Math.round( tax * 1e2 ) / 1e2;
     total = sum+tax;

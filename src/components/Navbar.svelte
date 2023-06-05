@@ -96,9 +96,10 @@
             function googleTranslateElementInit() {
               new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
             }
-            </script>
+          </script>
             
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          
           <a href="/login" class="btn btn-secondary btn-sm w-24 h-10">Login</a>
           <a href="/signup" class="btn btn-primary btn-sm w-24 h-10">Sign Up</a>
         </div>

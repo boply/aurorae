@@ -1,12 +1,15 @@
-<div class="hero min-h-screen bg-base-200">
-  <div class="hero-content text-center">
+<header class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
+  <div class="z-30 hero-content text-center text-white">
     <div class="max-w-md">
       <h1 class="text-5xl font-bold">Aurorae Biolabs</h1>
       <p class="py-6">We are a small Biotech Startup based in San Diego focusing on Stem Cells and their affects on Alzheimers and other brain disorders.</p>
-      <button class="btn btn-primary">Get Started</button>
+      <a href="/products"><button class="btn btn-primary">Get Started</button></a>
     </div>
   </div>
-</div>
+  <video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.
+  </video>
+</header>
 
 <div class="bg-gray-100">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

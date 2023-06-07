@@ -2,7 +2,7 @@
 This is a frontend for Aurorae Biolabs, an online e-commerce site for selling customized cells, based in San Diego. Our goals were to make a secure, intuitive and good looking site that would be fitting for an actual company rather than as a student project.
 
 # Framework and Software
-The framework this project is using is svelte-kit. It allows for faster and more efficient coding than a regular static project. On top of that we use tailwind CSS and Dasiy UI for CSS and making the whole site look better. We also use Firebase which is google's authentication service that provides websites with free industry level security and verification. While Firebase does allow coded api's we decided to use a java backend which can be found at this link: https://github.com/kar722/auroraebackend
+The framework this project is using is svelte-kit. It allows for faster and more efficient coding than a regular static project. On top of that we use tailwind CSS and Dasiy UI for CSS and making the whole site look better. We also use Firebase which is google's authentication service that provides websites with free industry level security and verification. While Firebase does allow coded api's we decided to use a java backend which can be found at this link: https://github.com/kar722/auroraebackend. Finally, the whole site is deployed with vercel which is a free deployment company for private projects.
 
 # Features
 - Product Page, for viewing products and adding them to the cart.
